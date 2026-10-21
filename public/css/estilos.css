@@ -486,3 +486,15 @@ a.boton{display:inline-block;text-decoration:none;text-align:center}
 .hora12 select{flex:1 1 0;min-width:0;font:inherit;color:var(--tx);padding:12px 8px;background:rgba(var(--bgrgb),.6);border:1px solid var(--bd);border-radius:12px;outline:0}
 .hora12 select:focus{border-color:var(--ac)}
 .hora12 option{color:#111}
+
+/* Inicio de sesión en celular: escudo arriba y formulario abajo, con aire */
+@media(max-width:760px){
+  .login__tarjeta{grid-template-columns:1fr;min-height:0}
+  .login__marca{padding:26px 20px 10px;gap:12px}
+  .login__marca::before{width:300px;height:300px;margin-left:-150px;top:-12%}
+  .login__marca img{width:min(170px,50%)}
+  .login__texto h2{font-size:1.15rem}
+  .login__texto p{font-size:.85rem}
+  .login__form{padding:22px 24px 32px}
+  .login__form h1{margin-bottom:18px}
+}
