@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>INFRAMEN | Administración</title>
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+  <header class="encabezado">
+    <div class="encabezado__titulo"><span class="logo-marco"><img src="/img/alacran.png" alt="Alacrán INFRAMEN"></span><span>INFRAMEN</span><small>Administración</small></div>
+    <nav class="encabezado__menu" aria-label="Menú principal">
+      <a href="/validar">Validar</a>
+      <a href="/historial">Historial</a>
+      <button type="button" id="btn-salir">Salir</button>
+    </nav>
+  </header>
+
+  <main class="contenido" style="max-width:1100px">
+    <div class="pestanas" role="tablist">
+      <button type="button" role="tab" id="tab-est" aria-selected="true">Estudiantes</button>
+      <button type="button" role="tab" id="tab-usu" aria-selected="false">Usuarios del personal</button>
+    </div>
+
+    <p id="mensaje" class="mensaje" role="alert" hidden style="margin-top:18px"></p>
+
+    <!-- ===== ESTUDIANTES ===== -->
+    <section id="sec-est">
+      <form id="f-est" class="filtros" role="search">
+        <input id="e-buscar" type="text" placeholder="NIE o nombre" aria-label="Buscar estudiante" autocomplete="off">
+        <select id="e-grado" aria-label="Grado"><option value="">Grado: Todos</option></select>
+        <select id="e-estado" aria-label="Estado">
+          <option value="">Estado: Todos</option>
+          <option value="ACTIVO">Activos</option>
+          <option value="INACTIVO">Inactivos</option>
+        </select>
+        <button class="boton boton--principal" type="submit">Buscar</button>
+        <button id="e-nuevo" class="boton boton--secundario" type="button">+ Nuevo estudiante</button>
+      </form>
+
+      <div id="e-editor" class="panel editor" hidden>
+        <h2 id="e-titulo">Nuevo estudiante</h2>
+        <form id="e-form" class="edit" novalidate>
+          <label>NIE<input id="f-nie" inputmode="numeric" maxlength="8" placeholder="8 números" required></label>
+          <label>Nombres<input id="f-nombres" maxlength="80" required></label>
+          <label>Apellidos<input id="f-apellidos" maxlength="80" required></label>
+          <label>Grado<select id="f-grado"></select></label>
+          <label>Sección<input id="f-seccion" maxlength="2" placeholder="A" required></label>
+          <label>Hora de entrada<input id="f-entrada" type="time" required></label>
+          <label>Hora de salida<input id="f-salida" type="time" required></label>
+          <label>Tolerancia (min)<input id="f-tol" type="number" min="0" max="60" value="0"></label>
+          <label id="f-estado-caja">Estado
+            <select id="f-estado"><option value="ACTIVO">Activo</option><option value="INACTIVO">Inactivo</option></select>
+          </label>
+          <label id="f-cuenta-caja" class="check"><input id="f-cuenta" type="checkbox" checked> Crear cuenta de acceso para el estudiante</label>
+          <div class="edit__acciones">
+            <button class="boton boton--principal" type="submit">Guardar</button>
+            <button id="e-cancelar" class="boton boton--secundario" type="button">Cancelar</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="tabla-caja">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">NIE</th><th scope="col">Estudiante</th><th scope="col">Grado</th>
+              <th scope="col">Horario</th><th scope="col">Ingresos</th><th scope="col">Estado</th><th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="e-cuerpo"></tbody>
+        </table>
+      </div>
+      <p id="e-resumen" class="resumen"></p>
+    </section>
+
+    <!-- ===== USUARIOS ===== -->
+    <section id="sec-usu" hidden>
+      <div class="filtros">
+        <button id="u-nuevo" class="boton boton--principal" type="button">+ Nuevo usuario</button>
+        <span class="nota">Docentes, personal de control y administradores. Las cuentas de los estudiantes se manejan en la pestaña Estudiantes.</span>
+      </div>
+
+      <div id="u-editor" class="panel editor" hidden>
+        <h2 id="u-titulo">Nuevo usuario</h2>
+        <form id="u-form" class="edit" novalidate>
+          <label>Usuario<input id="g-usuario" maxlength="50" autocomplete="off" required></label>
+          <label>Nombre completo<input id="g-nombre" maxlength="80" required></label>
+          <label>Rol
+            <select id="g-rol">
+              <option value="DOCENTE">Docente</option>
+              <option value="CONTROL">Control</option>
+              <option value="ADMINISTRADOR">Administrador</option>
+            </select>
+          </label>
+          <label>Contraseña<input id="g-clave" type="password" autocomplete="new-password" placeholder="Mínimo 8, con letras y números"></label>
+          <label id="g-activo-caja" class="check"><input id="g-activo" type="checkbox" checked> Cuenta activa</label>
+          <div class="edit__acciones">
+            <button class="boton boton--principal" type="submit">Guardar</button>
+            <button id="u-cancelar" class="boton boton--secundario" type="button">Cancelar</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="tabla-caja">
+        <table>
+          <thead>
+            <tr><th scope="col">Usuario</th><th scope="col">Nombre</th><th scope="col">Rol</th><th scope="col">Estado</th><th scope="col">Acciones</th></tr>
+          </thead>
+          <tbody id="u-cuerpo"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- Aviso con la contraseña generada (solo se muestra una vez) -->
+  <div id="clave-ov" class="paleta" hidden>
+    <div class="paleta__caja clave-caja">
+      <h3 id="clave-titulo">Contraseña generada</h3>
+      <p id="clave-texto"></p>
+      <code id="clave-valor"></code>
+      <p class="nota">Anótela y entréguela ahora: no se puede volver a ver. Si se pierde, genere otra.</p>
+      <div class="edit__acciones">
+        <button id="clave-copiar" class="boton boton--principal" type="button">Copiar</button>
+        <button id="clave-cerrar" class="boton boton--secundario" type="button">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <input id="foto-archivo" type="file" accept="image/jpeg,image/png,image/webp" hidden>
+
+  <script src="/js/comun.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>

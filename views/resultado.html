@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>INFRAMEN | Ficha de ingreso</title>
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+  <header class="encabezado">
+    <div class="encabezado__titulo"><span class="logo-marco"><img src="/img/alacran.png" alt="Alacrán INFRAMEN"></span><span>INFRAMEN</span><small>Ficha de ingreso</small></div>
+    <nav class="encabezado__menu" aria-label="Menú principal">
+      <a href="/validar">Validar</a>
+      <a href="/historial">Historial</a>
+      <button type="button" id="btn-salir">Salir</button>
+    </nav>
+  </header>
+
+  <main class="contenido" style="max-width:920px">
+    <article id="ficha" class="ficha">
+      <div class="ficha__cinta">
+        <span id="ficha-tipo" class="ficha__tipo">Ficha de ingreso</span>
+        <span class="ficha__fecha"><b id="dia-sem"></b><span id="fecha-larga"></span></span>
+      </div>
+
+      <div class="ficha__cuerpo">
+        <div id="foto" class="foto" aria-label="Fotografía del estudiante">
+          <svg width="150" height="200" viewBox="0 0 150 200" aria-hidden="true">
+            <circle cx="75" cy="72" r="26"></circle>
+            <polygon points="30,200 40,115 110,115 120,200"></polygon>
+          </svg>
+        </div>
+        <div class="resultado__datos">
+          <h1 id="nombre">Cargando...</h1>
+          <p id="nie"></p>
+          <p id="grado"></p>
+          <div id="insignia" class="insignia" hidden></div>
+        </div>
+      </div>
+
+      <div class="ficha__datos">
+        <div class="dato"><small>Entrada programada</small><strong id="h-entrada">--</strong></div>
+        <div class="dato"><small>Hora de llegada</small><strong id="h-llegada">--</strong></div>
+        <div class="dato"><small id="lbl-dif">Diferencia</small><strong id="h-dif">--</strong></div>
+      </div>
+      <div class="medidor" aria-hidden="true"><i id="medidor"></i></div>
+
+      <div class="ajuste">
+        <button type="button" id="btn-ajustar" class="enlace-btn">Editar llegada</button>
+        <div id="form-ajuste" class="ajuste__campos" hidden>
+          <label>Fecha<input type="date" id="a-fecha"></label>
+          <label>Hora de llegada<input type="time" id="a-hora"></label>
+          <label>Estado<select id="a-estado"><option value="PUNTUAL">Puntual</option><option value="TARDE">Tarde</option></select></label>
+        </div>
+      </div>
+
+      <div id="bloque-motivo" class="motivo" hidden>
+        <label for="observacion">Motivo del retardo <small>(opcional)</small></label>
+        <div class="chips">
+          <button type="button" class="chip" data-m="Problemas de transporte">Transporte</button>
+          <button type="button" class="chip" data-m="Motivo de salud">Salud</button>
+          <button type="button" class="chip" data-m="Asunto familiar">Familiar</button>
+          <button type="button" class="chip" data-m="Condiciones del clima">Clima</button>
+          <button type="button" class="chip">Otro</button>
+        </div>
+        <textarea id="observacion" maxlength="255" rows="2" placeholder="Escriba una observación..."></textarea>
+      </div>
+
+      <div id="sello" class="sello" aria-hidden="true">Registrado</div>
+    </article>
+
+    <p id="mensaje" class="mensaje" role="alert" hidden style="max-width:480px;margin:24px auto 0"></p>
+
+    <section class="confirmar">
+      <span class="confirmar__pregunta">¿Es la persona correcta?</span>
+      <button id="btn-confirmar" class="boton boton--principal" type="button" disabled>Confirmar</button>
+      <button id="btn-imprimir" class="boton boton--secundario" type="button">Imprimir ficha</button>
+      <button id="btn-cancelar" class="boton boton--secundario" type="button">Cancelar</button>
+    </section>
+  </main>
+
+  <script src="/js/comun.js"></script>
+  <script src="/js/resultado.js"></script>
+</body>
+</html>

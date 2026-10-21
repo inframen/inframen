@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>INFRAMEN | Historial de retardos</title>
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+  <header class="encabezado">
+    <div class="encabezado__titulo"><span class="logo-marco"><img src="/img/alacran.png" alt="Alacrán INFRAMEN"></span><span>INFRAMEN</span><small>Historial de retardos</small></div>
+    <nav class="encabezado__menu" aria-label="Menú principal">
+      <a href="/validar">Validar</a>
+      <a href="/historial" aria-current="page">Historial</a>
+      <button type="button" id="btn-salir">Salir</button>
+    </nav>
+  </header>
+
+  <main class="contenido" style="max-width:1100px">
+    <form id="filtros" class="filtros" role="search">
+      <input id="buscar" type="text" placeholder="NIE o nombre" aria-label="Buscar por NIE o nombre" autocomplete="off">
+      <select id="grado" aria-label="Grado">
+        <option value="">Grado: Todos</option>
+      </select>
+      <select id="mes" aria-label="Mes"></select>
+      <button class="boton boton--principal" type="submit">Buscar</button>
+      <button id="btn-exportar" class="boton boton--secundario" type="button">Exportar</button>
+    </form>
+
+    <p id="mensaje" class="mensaje" role="alert" hidden style="margin-top:18px"></p>
+
+    <div class="tabla-caja">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Fecha</th>
+            <th scope="col">NIE</th>
+            <th scope="col">Estudiante</th>
+            <th scope="col">Grado</th>
+            <th scope="col">Llegada</th>
+            <th scope="col">Retardo</th>
+          </tr>
+        </thead>
+        <tbody id="cuerpo"></tbody>
+      </table>
+    </div>
+    <p id="resumen" class="resumen"></p>
+  </main>
+
+  <script src="/js/comun.js"></script>
+  <script src="/js/historial.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>INFRAMEN | Validación de ingreso</title>
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+  <header class="encabezado">
+    <div class="encabezado__titulo"><span class="logo-marco"><img src="/img/alacran.png" alt="Alacrán INFRAMEN"></span><span>INFRAMEN</span><small>Validación de ingreso</small></div>
+    <nav class="encabezado__menu" aria-label="Menú principal">
+      <a href="/validar" aria-current="page">Validar</a>
+      <a href="/historial">Historial</a>
+      <button type="button" id="btn-salir">Salir</button>
+    </nav>
+  </header>
+
+  <main class="contenido contenido--centrado">
+    <div class="escudo"><img src="/img/alacran.png" alt="Alacrán INFRAMEN"></div>
+    <h1>Ingrese su NIE</h1>
+    <p class="subtitulo">Digite los 8 números de su número de identificación</p>
+
+    <div id="nie" class="nie" role="group" aria-label="NIE de 8 dígitos"></div>
+
+    <div class="acciones-centro">
+      <p id="mensaje" class="mensaje" role="alert" hidden></p>
+      <button id="btn-validar" class="boton boton--principal boton--ancho" type="button">Validar</button>
+    </div>
+
+    <p id="pie-hora" class="pie-hora"></p>
+  </main>
+
+  <script src="/js/comun.js"></script>
+  <script src="/js/validar.js"></script>
+</body>
+</html>

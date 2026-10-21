@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>INFRAMEN | Inicio de sesión</title>
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+  <main class="login">
+    <div class="login__tarjeta">
+      <aside class="login__marca">
+        <img src="img/alacran-escudo-limpio.png" alt="Alacrán INFRAMEN">
+        <div class="login__texto">
+          <h2>Puntualidad, disciplina y honor.</h2>
+          <p>Instituto Nacional General Francisco Menéndez</p>
+        </div>
+      </aside>
+      <section class="login__form">
+        <h1>Acceso al sistema</h1>
+    <form id="form-login" class="formulario" novalidate>
+      <label for="usuario">Usuario</label>
+      <input id="usuario" name="usuario" type="text" autocomplete="username" autofocus required>
+
+      <label for="clave">Contraseña</label>
+      <input id="clave" name="clave" type="password" autocomplete="current-password" required>
+
+      <p id="mensaje" class="mensaje" role="alert" hidden></p>
+
+      <button id="btn-entrar" class="boton boton--principal boton--ancho" type="submit">Iniciar sesión</button>
+    </form>
+      </section>
+    </div>
+  </main>
+
+  <script src="/js/comun.js"></script>
+  <script src="/js/login.js"></script>
+</body>
+</html>

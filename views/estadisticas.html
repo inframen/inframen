@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>INFRAMEN | Estadísticas</title>
+ <link rel="icon" type="image/png" href="/img/favicon.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+  <header class="encabezado">
+    <div class="encabezado__titulo"><span class="logo-marco"><img src="/img/alacran.png" alt="Alacrán INFRAMEN"></span><span>INFRAMEN</span><small>Estadísticas</small></div>
+    <nav class="encabezado__menu" aria-label="Menú principal">
+      <a href="/validar">Validar</a>
+      <a href="/historial">Historial</a>
+      <button type="button" id="btn-salir">Salir</button>
+    </nav>
+  </header>
+  <main class="contenido" style="max-width:1100px">
+    <h1>Panel del mes: <span id="mes-txt"></span></h1>
+    <p id="mensaje" class="mensaje" role="alert" hidden></p>
+    <section class="kpis">
+      <div class="kpi"><small>Ingresos del mes</small><strong id="k-total">0</strong></div>
+      <div class="kpi"><small>Puntualidad</small><strong id="k-pun">0%</strong></div>
+      <div class="kpi"><small>Retardos</small><strong id="k-tarde">0</strong></div>
+    </section>
+    <section class="grilla">
+      <div class="panel"><h2>Puntualidad</h2><div class="donut-caja"><svg class="donut" viewBox="0 0 120 120"><circle class="pista" cx="60" cy="60" r="52"></circle><circle id="donut" class="valor" cx="60" cy="60" r="52"></circle></svg><b id="donut-txt">0%</b></div></div>
+      <div class="panel"><h2>Retardos por día de la semana</h2><div id="dias" class="dias"></div></div>
+      <div class="panel"><h2>Retardos por grado (toque uno para ver el detalle)</h2><div id="grados"></div></div>
+      <div class="panel"><h2>Calendario de calor</h2><div id="cal" class="cal"></div></div>
+      <div class="panel"><h2>Más retardos del mes</h2><ol id="rank" class="rank"></ol></div>
+      <div class="panel"><h2>Liga de puntualidad (por sección)</h2><ol id="liga" class="rank"></ol></div>
+      <div class="panel"><h2>Hoy en vivo</h2><div id="hoy"></div></div>
+    </section>
+  </main>
+  <script src="/js/comun.js"></script>
+  <script src="/js/estadisticas.js"></script>
+</body>
+</html>
+

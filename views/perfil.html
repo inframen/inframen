@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>INFRAMEN | Perfil del estudiante</title>
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+  <header class="encabezado">
+    <div class="encabezado__titulo"><span class="logo-marco"><img src="/img/alacran.png" alt="Alacrán INFRAMEN"></span><span>INFRAMEN</span><small>Perfil del estudiante</small></div>
+    <nav class="encabezado__menu" aria-label="Menú principal">
+      <a href="/validar">Validar</a>
+      <a href="/historial">Historial</a>
+      <button type="button" id="btn-salir">Salir</button>
+    </nav>
+  </header>
+  <main class="contenido" style="max-width:1000px">
+    <section class="perfil">
+      <div id="p-foto" class="perfil__foto"></div>
+      <div>
+        <h1 id="p-nombre">Cargando...</h1>
+        <p id="p-nie"></p><p id="p-grado"></p>
+        <div id="p-ins" class="fila-ins"></div>
+      </div>
+    </section>
+    <p id="mensaje" class="mensaje" role="alert" hidden style="margin-top:18px"></p>
+    <section class="kpis">
+      <div class="kpi"><small>Ingresos</small><strong id="k-ing">0</strong></div>
+      <div class="kpi"><small>Puntualidad</small><strong id="k-pct">0%</strong></div>
+      <div class="kpi"><small>Racha puntual</small><strong id="k-racha">0</strong></div>
+      <div class="kpi"><small>Retardos este mes</small><strong id="k-mes">0</strong></div>
+    </section>
+    <section class="grilla">
+      <div class="panel"><h2>Línea de tiempo</h2><div id="tl" class="tl"></div></div>
+      <div class="panel"><h2>Motivos de retardo más comunes</h2><ol id="motivos" class="rank"></ol></div>
+    </section>
+    <section class="panel" id="panel-notas" style="margin-top:14px">
+      <h2>Notas del personal</h2>
+      <form id="form-nota" class="nota-form" novalidate hidden>
+        <p id="aviso-nota" class="mensaje mensaje--error" hidden></p>
+        <div class="chips"><button type="button" class="chip" id="nota-plantilla">Llega tarde todos los días</button></div>
+        <textarea id="nota-texto" maxlength="1000" rows="3" placeholder="Escriba una nota sobre el estudiante..."></textarea>
+        <button class="boton boton--principal boton--mini" type="submit">Guardar nota</button>
+        <p id="msg-nota" class="mensaje" role="alert" hidden></p>
+      </form>
+      <div id="notas" class="notas"></div>
+    </section>
+  </main>
+  <script src="/js/comun.js"></script>
+  <script src="/js/perfil.js"></script>
+</body>
+</html>
