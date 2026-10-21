@@ -498,3 +498,9 @@ a.boton{display:inline-block;text-decoration:none;text-align:center}
   .login__form{padding:22px 24px 32px}
   .login__form h1{margin-bottom:18px}
 }
+/* ===== Teléfono: que el menú y "+ Nuevo estudiante" quepan sin deslizar ===== */
+@media(max-width:700px){
+  .encabezado__menu{overflow-x:visible;flex-wrap:wrap;gap:4px;justify-content:flex-start}
+  .encabezado__menu a,.encabezado__menu button{flex:1 1 auto;text-align:center;padding:8px 10px;font-size:.85rem}
+  #sec-est .filtros .boton,#sec-usu .filtros .boton{min-width:0;padding:0 10px;white-space:normal;line-height:1.1;font-size:clamp(.85rem,3.8vw,1rem)}
+}
