@@ -518,3 +518,21 @@ a.boton{display:inline-block;text-decoration:none;text-align:center}
   max-width: 56px;
   padding: 0;
 }
+
+/* Inicio de sesión en teléfono: logo arriba y formulario abajo (una sola columna) */
+@media (max-width: 760px) {
+  .login__tarjeta {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  .login__marca {
+    padding: 28px 20px;
+    gap: 16px;
+  }
+  .login__marca img {
+    width: min(300px, 78%);
+  }
+  .login__form {
+    padding: 26px 20px;
+  }
+}
