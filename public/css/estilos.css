@@ -487,52 +487,34 @@ a.boton{display:inline-block;text-decoration:none;text-align:center}
 .hora12 select:focus{border-color:var(--ac)}
 .hora12 option{color:#111}
 
-/* Inicio de sesión en celular: escudo arriba y formulario abajo, con aire */
-@media(max-width:760px){
-  .login__tarjeta{grid-template-columns:1fr;min-height:0}
-  .login__marca{padding:26px 20px 10px;gap:12px}
-  .login__marca::before{width:300px;height:300px;margin-left:-150px;top:-12%}
-  .login__marca img{width:min(170px,50%)}
-  .login__texto h2{font-size:1.15rem}
-  .login__texto p{font-size:.85rem}
-  .login__form{padding:22px 24px 32px}
-  .login__form h1{margin-bottom:18px}
-}
-/* ===== Teléfono: que el menú y "+ Nuevo estudiante" quepan sin deslizar ===== */
-@media(max-width:700px){
-  .encabezado__menu{overflow-x:visible;flex-wrap:wrap;gap:4px;justify-content:flex-start}
-  .encabezado__menu a,.encabezado__menu button{flex:1 1 auto;text-align:center;padding:8px 10px;font-size:.85rem}
-  #sec-est .filtros .boton,#sec-usu .filtros .boton{min-width:0;padding:0 10px;white-space:normal;line-height:1.1;font-size:clamp(.85rem,3.8vw,1rem)}
-}
-@media (max-width: 700px) {
-  .menu {
-    display: flex;
-    flex-wrap: nowrap;          /* una sola fila */
-    overflow-x: auto;           /* se desliza de lado */
+/* ===== Correcciones para teléfono ===== */
+/* Menú en una sola fila que se desliza de lado */
+@media (max-width: 760px) {
+  .encabezado__menu {
+    width: 100%;
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;      /* oculta la barra */
-    gap: 8px;
+    scrollbar-width: none;
   }
-  .menu::-webkit-scrollbar { display: none; }
-  .menu a,
-  .menu button {
-    flex: 0 0 auto;             /* el botón no se encoge */
-    white-space: nowrap;        /* el texto no se parte */
+  .encabezado__menu::-webkit-scrollbar { display: none; }
+  .encabezado__menu > * {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    white-space: nowrap;
   }
 }
-.nie-casillas {
-  display: flex;
-  flex-wrap: nowrap;      /* siempre en una sola fila */
-  justify-content: center;
-  gap: 6px;
+
+/* Las 8 casillas del NIE siempre en una sola línea */
+.nie {
+  flex-wrap: nowrap;
+  gap: clamp(4px, 1.4vw, 12px);
 }
-.nie-casillas input {
-  flex: 1 1 0;            /* se reparten el espacio por igual */
-  min-width: 0;           /* permite que se achiquen */
-  max-width: 52px;        /* en pantalla grande no crecen de más */
+.nie__d {
+  flex: 1 1 0;
+  min-width: 0;
   width: auto;
-  height: 56px;
+  max-width: 56px;
   padding: 0;
-  text-align: center;
-  font-size: 1.4rem;
 }
