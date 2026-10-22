@@ -504,3 +504,35 @@ a.boton{display:inline-block;text-decoration:none;text-align:center}
   .encabezado__menu a,.encabezado__menu button{flex:1 1 auto;text-align:center;padding:8px 10px;font-size:.85rem}
   #sec-est .filtros .boton,#sec-usu .filtros .boton{min-width:0;padding:0 10px;white-space:normal;line-height:1.1;font-size:clamp(.85rem,3.8vw,1rem)}
 }
+@media (max-width: 700px) {
+  .menu {
+    display: flex;
+    flex-wrap: nowrap;          /* una sola fila */
+    overflow-x: auto;           /* se desliza de lado */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;      /* oculta la barra */
+    gap: 8px;
+  }
+  .menu::-webkit-scrollbar { display: none; }
+  .menu a,
+  .menu button {
+    flex: 0 0 auto;             /* el botón no se encoge */
+    white-space: nowrap;        /* el texto no se parte */
+  }
+}
+.nie-casillas {
+  display: flex;
+  flex-wrap: nowrap;      /* siempre en una sola fila */
+  justify-content: center;
+  gap: 6px;
+}
+.nie-casillas input {
+  flex: 1 1 0;            /* se reparten el espacio por igual */
+  min-width: 0;           /* permite que se achiquen */
+  max-width: 52px;        /* en pantalla grande no crecen de más */
+  width: auto;
+  height: 56px;
+  padding: 0;
+  text-align: center;
+  font-size: 1.4rem;
+}
